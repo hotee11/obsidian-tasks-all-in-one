@@ -1,12 +1,5 @@
 # Obsidian Tasks All In One
 
-<div align="center">
-
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/hotee11/obsidian-tasks-all-in-one)
-![GitHub downloads](https://img.shields.io/github/downloads/hotee11/obsidian-tasks-all-in-one/total)
-
-<img src="https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033045.png?hotee" alt="Plugin Hero Banner" />
-
 **Not just a task list, but your personal productivity center (LifeOS) in Obsidian.**
 
 [English](#english) | [中文说明](#中文说明)
