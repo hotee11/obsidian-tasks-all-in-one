@@ -1,6 +1,6 @@
 # Obsidian Tasks All In One
 
-**Not just a task list, but your personal productivity center (LifeOS) in Obsidian.**
+**Not just a task list, but your personal productivity center in Obsidian.**
 
 [English](#english) | [中文说明](#中文说明)
 
