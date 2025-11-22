@@ -5,9 +5,7 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/hotee11/obsidian-tasks-all-in-one)
 ![GitHub downloads](https://img.shields.io/github/downloads/hotee11/obsidian-tasks-all-in-one/total)
 
-<!-- 📷 [Insert Image Here: Plugin Hero Banner / Overview] -->
-<!-- Suggestion: A collage showing Calendar, Matrix, and Inbox views together -->
-<!-- <img src="https://placehold.co/800x400?text=Plugin+Hero+Banner" alt="Plugin Hero Banner" /> -->
+<img src="https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033045.png?hotee" alt="Plugin Hero Banner" />
 
 **Not just a task list, but your personal productivity center (LifeOS) in Obsidian.**
 
@@ -32,16 +30,16 @@ Say goodbye to boring lists and re-examine your tasks through the dimension of t
 *   **Time Blocking**: Drag and drop tasks from the Inbox directly into the calendar like building blocks to easily complete your schedule planning.
 *   **WYSIWYG**: Task status and priority are clear at a glance, with an interaction experience as smooth as a native app.
 
-<!-- 📷 [Insert Image Here: Calendar View Screenshot] -->
-<!-- Suggestion: Show Week View demonstrating drag-and-drop -->
+![Calendar View](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033118.png?hotee)
+![Week View](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033131.png?hotee)
 
 #### ⚡ Focus on What Matters: Eisenhower Matrix
 It's not just about getting things done, but getting the right things done.
 *   **Auto-Categorization**: No manual sorting needed. The plugin automatically categorizes tasks into four quadrants based on **Priority** and **Due Date**.
 *   **Stop Being Busy Blindly**: Instantly identify "Important & Urgent" matters and always focus your energy on the cutting edge.
 
-<!-- 📷 [Insert Image Here: Matrix View Screenshot] -->
-<!-- Suggestion: Show clear task cards in four quadrants -->
+![Matrix View](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033220.png?hotee)
+![Matrix Details](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033445.png?hotee)
 
 #### 📥 Tame the Chaos: Powerful Inbox
 A unified gathering place for all to-dos, ensuring no inspiration is missed.
@@ -49,14 +47,16 @@ A unified gathering place for all to-dos, ensuring no inspiration is missed.
 *   **Flexible Grouping**: Support automatic grouping by **File Source**, **Folder**, or **Tag** to keep things organized.
 *   **Hierarchy Support**: Perfectly supports nested display of parent-child tasks, making complex projects easy to break down.
 
-<!-- 📷 [Insert Image Here: Inbox List Screenshot] -->
-<!-- Suggestion: Show list with grouping and subtasks -->
+![Inbox View](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033356.png?hotee)
+![Inbox Grouping](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033333.png?hotee)
 
 #### 🎨 Personalization
 Create your own exclusive task management interface.
 *   **Custom Statuses**: Not just "Done" and "Undone". Define custom statuses and icons like `>>` (Deferred), `?` (Question), `/` (In Progress).
 *   **Smart Coloring**: Set keyword or tag rules (e.g., `#Work` = Blue, `#Life` = Green) to make task types clear at a glance.
 *   **Theme Adaptation**: Perfectly adapts to Obsidian's Dark and Light modes.
+
+![Settings](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033505.png?hotee)
 
 ### 🚀 Quick Start
 
@@ -92,16 +92,16 @@ If you like this plugin, please give it a ⭐ **Star** on the top right of the r
 *   **拖拽排程 (Time Blocking)**：像整理积木一样，直接将任务从 Inbox 拖入日历，轻松完成时间规划。
 *   **所见即所得**：任务状态、优先级一目了然，交互体验如原生 App 般丝滑。
 
-<!-- 📷 [请在此处插入图片：日历视图截图] -->
-<!-- 建议：展示周视图，体现拖拽任务的效果 -->
+![日历视图](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033118.png?hotee)
+![周视图](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033131.png?hotee)
 
 #### ⚡ 聚焦要事：艾森豪威尔矩阵 (四象限)
 不仅要把事情做完，更要把事情做对。
 *   **自动分类**：无需手动整理，插件根据任务的 **优先级** 和 **截止日期**，自动将任务归入四个象限。
 *   **拒绝瞎忙**：一眼识别“重要且紧急”的事务，始终将精力集中在刀刃上。
 
-<!-- 📷 [请在此处插入图片：四象限视图截图] -->
-<!-- 建议：展示四个象限分类清晰的任务卡片 -->
+![四象限视图](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033220.png?hotee)
+![四象限详情](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033445.png?hotee)
 
 #### 📥 驾驭杂乱：强大的收集箱 (Inbox)
 所有待办事项的统一汇聚地，不再遗漏任何灵感。
@@ -109,14 +109,16 @@ If you like this plugin, please give it a ⭐ **Star** on the top right of the r
 *   **灵活分组**：支持按 **文件来源**、**文件夹** 或 **标签** 自动分组展示，井井有条。
 *   **层级结构**：完美支持父子任务嵌套显示，复杂项目也能轻松拆解。
 
-<!-- 📷 [请在此处插入图片：Inbox 列表截图] -->
-<!-- 建议：展示带有分组和子任务的列表状态 -->
+![Inbox 列表](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033356.png?hotee)
+![Inbox 分组](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033333.png?hotee)
 
 #### 🎨 个性化定制
 打造专属于你的任务管理界面。
 *   **自定义状态**：不仅是“完成”和“未完成”，支持定义如 `>>` (推迟)、`?` (疑问)、`/` (进行中) 等自定义状态与图标。
 *   **智能着色**：设置关键词或标签规则（如 `#工作` = 蓝色，`#生活` = 绿色），让任务类型一目了然。
 *   **主题适配**：完美适配 Obsidian 的深色与浅色模式。
+
+![设置界面](https://picgo-1317544872.cos.ap-guangzhou.myqcloud.com/%E6%88%AA%E5%9B%BE_20251123033505.png?hotee)
 
 ### 🚀 快速开始
 
