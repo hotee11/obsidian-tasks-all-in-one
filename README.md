@@ -1,11 +1,19 @@
 # Obsidian Tasks All In One
 
+<div align="center">
+
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/hotee11/obsidian-tasks-all-in-one)
 ![GitHub downloads](https://img.shields.io/github/downloads/hotee11/obsidian-tasks-all-in-one/total)
 
+<!-- 📷 [Insert Image Here: Plugin Hero Banner / Overview] -->
+<!-- Suggestion: A collage showing Calendar, Matrix, and Inbox views together -->
+<!-- <img src="https://placehold.co/800x400?text=Plugin+Hero+Banner" alt="Plugin Hero Banner" /> -->
+
+**Not just a task list, but your personal productivity center (LifeOS) in Obsidian.**
+
 [English](#english) | [中文说明](#中文说明)
 
-An all-in-one task management plugin for Obsidian, featuring Calendar, Eisenhower Matrix, and Inbox views.
+</div>
 
 ---
 
@@ -13,41 +21,59 @@ An all-in-one task management plugin for Obsidian, featuring Calendar, Eisenhowe
 
 ## 🇬🇧 English
 
-**Obsidian Tasks All In One** is a powerful plugin designed to help you manage your tasks efficiently within Obsidian. It aggregates tasks from your vault and presents them in various interactive views.
+### 💡 Why Choose Tasks All In One?
+Are your tasks scattered across various notes, making them hard to manage? You need a perspective that orchestrates the whole picture. **Obsidian Tasks All In One** aggregates scattered tasks into one place, helping you evolve from "recording tasks" to "managing life" through modern interactive views. Whether you are a GTD practitioner, a Time Blocking enthusiast, or a believer in the Eisenhower Matrix, there is a workflow here for you.
 
-### ✨ Features
+### ✨ Core Features
 
-*   **📊 Unified Dashboard**: Access all your task views in one place.
-*   **📅 Calendar View**:
-    *   Visualize tasks by due date.
-    *   Support for Day, Week, and Month views.
-    *   Drag and drop to reschedule tasks.
-*   **⚡ Eisenhower Matrix**:
-    *   Automatically categorize tasks into 4 quadrants based on **Priority** and **Urgency** (Due Date).
-    *   Focus on what matters most (Important & Urgent).
-*   **📥 Inbox Management**:
-    *   Consolidate tasks from specific folders.
-    *   Group tasks by File, Folder, or Tag.
-    *   Sort by Priority, Creation Time, etc.
-*   **🎨 Customization**:
-    *   **Custom Statuses**: Define your own task statuses (e.g., In Progress, Canceled) with custom symbols and colors.
-    *   **Color Rules**: Automatically color-code tasks based on keywords or tags.
-    *   **Localization**: Fully localized in English and Chinese.
+#### 📅 Master Your Schedule: Pro-Level Calendar View
+Say goodbye to boring lists and re-examine your tasks through the dimension of time.
+*   **Multi-dimensional Perspective**: Seamlessly switch between **Day / Week / Month** views to focus on the present or look ahead.
+*   **Time Blocking**: Drag and drop tasks from the Inbox directly into the calendar like building blocks to easily complete your schedule planning.
+*   **WYSIWYG**: Task status and priority are clear at a glance, with an interaction experience as smooth as a native app.
 
-### 🚀 Installation
+<!-- 📷 [Insert Image Here: Calendar View Screenshot] -->
+<!-- Suggestion: Show Week View demonstrating drag-and-drop -->
 
-#### Manual Installation
-1.  Download the latest release from the [Releases Page](https://github.com/hotee11/obsidian-tasks-all-in-one/releases).
-2.  Extract the files (`main.js`, `manifest.json`, `styles.css`) into your vault's plugin folder: `<VaultFolder>/.obsidian/plugins/tasks-all-in-one/`.
-3.  Reload Obsidian and enable the plugin in Settings.
+#### ⚡ Focus on What Matters: Eisenhower Matrix
+It's not just about getting things done, but getting the right things done.
+*   **Auto-Categorization**: No manual sorting needed. The plugin automatically categorizes tasks into four quadrants based on **Priority** and **Due Date**.
+*   **Stop Being Busy Blindly**: Instantly identify "Important & Urgent" matters and always focus your energy on the cutting edge.
 
-### 📖 Usage
+<!-- 📷 [Insert Image Here: Matrix View Screenshot] -->
+<!-- Suggestion: Show clear task cards in four quadrants -->
 
-1.  **Open Dashboard**: Click the **Calendar with Checkmark** icon in the left ribbon, or use the command palette (`Ctrl/Cmd + P`) and search for **"Open Dashboard"**.
-2.  **Settings**: Go to **Settings > Tasks All In One** to configure:
-    *   **Inbox Folder**: Choose which folder to scan for tasks.
-    *   **Matrix Settings**: Define what counts as "Urgent" (days until due) and "Important" (priority levels).
-    *   **Colors & Statuses**: Customize the look and feel.
+#### 📥 Tame the Chaos: Powerful Inbox
+A unified gathering place for all to-dos, ensuring no inspiration is missed.
+*   **Smart Aggregation**: Automatically capture tasks from specified folders or the entire vault.
+*   **Flexible Grouping**: Support automatic grouping by **File Source**, **Folder**, or **Tag** to keep things organized.
+*   **Hierarchy Support**: Perfectly supports nested display of parent-child tasks, making complex projects easy to break down.
+
+<!-- 📷 [Insert Image Here: Inbox List Screenshot] -->
+<!-- Suggestion: Show list with grouping and subtasks -->
+
+#### 🎨 Personalization
+Create your own exclusive task management interface.
+*   **Custom Statuses**: Not just "Done" and "Undone". Define custom statuses and icons like `>>` (Deferred), `?` (Question), `/` (In Progress).
+*   **Smart Coloring**: Set keyword or tag rules (e.g., `#Work` = Blue, `#Life` = Green) to make task types clear at a glance.
+*   **Theme Adaptation**: Perfectly adapts to Obsidian's Dark and Light modes.
+
+### 🚀 Quick Start
+
+#### Installation
+1.  Download the latest `main.js`, `manifest.json`, `styles.css` from the [Releases Page](https://github.com/hotee11/obsidian-tasks-all-in-one/releases).
+2.  Extract the files to your vault's plugin directory: `<VaultFolder>/.obsidian/plugins/tasks-all-in-one/`.
+3.  Restart Obsidian and enable it in **Settings > Community Plugins**.
+
+#### Usage Guide
+1.  **Launch Dashboard**: Click the "Calendar with Checkmark" icon in the left sidebar, or use the Command Palette (`Ctrl/Cmd + P`) to search for `"Open Dashboard"`.
+2.  **Configuration**: Go to **Settings > Tasks All In One**:
+    *   **Inbox Source**: Specify which folders to scan to avoid distractions.
+    *   **Urgency Rules**: Define the time threshold for "Urgent" tasks (e.g., due within 3 days).
+    *   **Visual Style**: Customize task colors and status icons.
+
+### 🤝 Feedback & Support
+If you like this plugin, please give it a ⭐ **Star** on the top right of the repository to support the developer! Encountered issues or have new feature suggestions? Feel free to submit an Issue.
 
 ---
 
@@ -55,44 +81,61 @@ An all-in-one task management plugin for Obsidian, featuring Calendar, Eisenhowe
 
 ## 🇨🇳 中文说明
 
-**Obsidian Tasks All In One** 是一款功能强大的 Obsidian 任务管理插件。它能从你的仓库中聚合任务，并通过多种交互视图展示，助你高效管理待办事项。
+### 💡 为什么选择 Tasks All In One？
+你的任务是否散落在各个笔记中难以管理？你需要一个能够统筹全局的视角。 **Obsidian Tasks All In One** 将分散的任务汇聚一处，通过现代化的交互视图，帮助你从“记录任务”进化到“管理生活”。无论你是 GTD 践行者、时间块 (Time Blocking) 爱好者，还是四象限法则的信徒，这里都有适合你的工作流。
 
-### ✨ 功能特性
+### ✨ 核心特性
 
-*   **📊 统一仪表盘**：在一个界面中访问所有任务视图。
-*   **📅 日历视图**：
-    *   按截止日期可视化任务。
-    *   支持日视图、周视图和月视图。
-    *   支持拖拽任务修改日期。
-*   **⚡ 四象限视图 (艾森豪威尔矩阵)**：
-    *   根据**优先级**和**紧急程度**（截止日期）自动将任务分类到四个象限。
-    *   专注于“重要且紧急”的事务。
-*   **📥 Inbox (收集箱) 管理**：
-    *   聚合特定文件夹中的任务。
-    *   支持按文件、文件夹或标签分组。
-    *   支持按优先级、创建时间等排序。
-*   **🎨 高度定制**：
-    *   **自定义状态**：定义你自己的任务状态（如：进行中、已取消），支持自定义符号和颜色。
-    *   **颜色规则**：根据关键词或标签自动为任务着色。
-    *   **多语言支持**：完整支持中文和英文界面。
+#### 📅 掌控日程：专业级日历视图
+告别枯燥的列表，用时间维度重新审视你的任务。
+*   **多维视角**：无缝切换 **日 / 周 / 月** 视图，既能聚焦当下，也能放眼长远。
+*   **拖拽排程 (Time Blocking)**：像整理积木一样，直接将任务从 Inbox 拖入日历，轻松完成时间规划。
+*   **所见即所得**：任务状态、优先级一目了然，交互体验如原生 App 般丝滑。
 
-### 🚀 安装方法
+<!-- 📷 [请在此处插入图片：日历视图截图] -->
+<!-- 建议：展示周视图，体现拖拽任务的效果 -->
 
-#### 手动安装
-1.  从 [Releases 页面](https://github.com/hotee11/obsidian-tasks-all-in-one/releases) 下载最新版本。
-2.  将文件 (`main.js`, `manifest.json`, `styles.css`) 解压到你的仓库插件目录：`<VaultFolder>/.obsidian/plugins/tasks-all-in-one/`。
-3.  重启 Obsidian 并在设置中启用插件。
+#### ⚡ 聚焦要事：艾森豪威尔矩阵 (四象限)
+不仅要把事情做完，更要把事情做对。
+*   **自动分类**：无需手动整理，插件根据任务的 **优先级** 和 **截止日期**，自动将任务归入四个象限。
+*   **拒绝瞎忙**：一眼识别“重要且紧急”的事务，始终将精力集中在刀刃上。
 
-### 📖 使用指南
+<!-- 📷 [请在此处插入图片：四象限视图截图] -->
+<!-- 建议：展示四个象限分类清晰的任务卡片 -->
 
-1.  **打开仪表盘**：点击左侧侧边栏的 **“带对勾的日历”** 图标，或者使用命令面板 (`Ctrl/Cmd + P`) 搜索 **"Open Dashboard"**。
-2.  **插件设置**：进入 **设置 > Tasks All In One** 进行配置：
-    *   **Inbox 文件夹**：设置扫描哪些文件夹的任务。
-    *   **四象限设置**：定义什么是“紧急”（多少天内到期）和“重要”（哪些优先级）。
-    *   **颜色与状态**：自定义任务的显示样式。
+#### 📥 驾驭杂乱：强大的收集箱 (Inbox)
+所有待办事项的统一汇聚地，不再遗漏任何灵感。
+*   **智能聚合**：自动抓取指定文件夹或全库的任务。
+*   **灵活分组**：支持按 **文件来源**、**文件夹** 或 **标签** 自动分组展示，井井有条。
+*   **层级结构**：完美支持父子任务嵌套显示，复杂项目也能轻松拆解。
+
+<!-- 📷 [请在此处插入图片：Inbox 列表截图] -->
+<!-- 建议：展示带有分组和子任务的列表状态 -->
+
+#### 🎨 个性化定制
+打造专属于你的任务管理界面。
+*   **自定义状态**：不仅是“完成”和“未完成”，支持定义如 `>>` (推迟)、`?` (疑问)、`/` (进行中) 等自定义状态与图标。
+*   **智能着色**：设置关键词或标签规则（如 `#工作` = 蓝色，`#生活` = 绿色），让任务类型一目了然。
+*   **主题适配**：完美适配 Obsidian 的深色与浅色模式。
+
+### 🚀 快速开始
+
+#### 安装
+1.  从 [Releases 页面](https://github.com/hotee11/obsidian-tasks-all-in-one/releases) 下载最新版本的 `main.js`, `manifest.json`, `styles.css`。
+2.  将文件解压至你的仓库插件目录：`<VaultFolder>/.obsidian/plugins/tasks-all-in-one/`。
+3.  重启 Obsidian，并在 **设置 > 第三方插件** 中启用。
+
+#### 使用指南
+1.  **启动仪表盘**：点击左侧侧边栏的 “带对勾的日历” 图标，或使用命令面板 (`Ctrl/Cmd + P`) 搜索 `"Open Dashboard"`。
+2.  **个性化配置**：进入 **设置 > Tasks All In One**：
+    *   **Inbox 源**：指定扫描哪些文件夹，避免无关干扰。
+    *   **紧急度规则**：定义“紧急”任务的时间阈值（如：3天内到期）。
+    *   **视觉风格**：自定义任务颜色与状态图标。
+
+### 🤝 反馈与支持
+如果你喜欢这个插件，欢迎在该仓库右上角点一颗 ⭐ **Star** 支持开发者！ 遇到问题或有新功能建议？请随时提交 Issue。
 
 ---
 
 ### 📄 License
-
 MIT License
