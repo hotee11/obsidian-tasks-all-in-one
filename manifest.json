@@ -1,9 +1,9 @@
 {
 	"id": "tasks-all-in-one",
-	"name": "tasks all in one",
+	"name": "Tasks All In One",
 	"version": "1.0.8",
 	"minAppVersion": "0.15.0",
-	"description": "An all-in-one task management plugin for Obsidian, featuring Kanban, Calendar, and Eisenhower Matrix views.",
+	"description": "An all-in-one task management plugin featuring Calendar, Eisenhower Matrix, and Inbox views.",
 	"author": "hotee11",
 	"authorUrl": "https://github.com/hotee11",
 	"isDesktopOnly": false
