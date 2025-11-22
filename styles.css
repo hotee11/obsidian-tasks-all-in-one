@@ -1,8 +1,1189 @@
-/*
+/* --- LifeOS Design System (Fantastical / Zinc Theme) --- */
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+:root {
+    /* Palette extracted from SVG */
+    --pw-white: #FFFFFF;
+    --pw-zinc-50: #FAFAFA;
+    --pw-zinc-100: #F4F4F5;
+    --pw-zinc-200: #E4E4E7;
+    --pw-zinc-300: #D4D4D8;
+    --pw-zinc-400: #A1A1AA;
+    --pw-zinc-500: #71717A;
+    --pw-zinc-900: #18181B;
 
-If your plugin does not need CSS, delete this file.
+    /* Semantic Variables */
+    --pw-bg-main: var(--pw-white);
+    --pw-bg-sidebar: var(--pw-zinc-50); /* Inbox Background */
+    --pw-bg-element: var(--pw-zinc-100); /* Buttons, Inputs */
+    --pw-bg-hover: var(--pw-zinc-200);
+    
+    --pw-text-primary: var(--pw-zinc-900);
+    --pw-text-secondary: var(--pw-zinc-500);
+    --pw-text-tertiary: var(--pw-zinc-400);
+    
+    --pw-border-color: var(--pw-zinc-200); /* Much lighter, crisper border */
+    
+    /* Priority Colors (Bright & Visible) */
+    --c-red-bg: #FEF2F2;
+    --c-red-text: #DC2626;
+    --c-orange-bg: #FFF7ED;
+    --c-orange-text: #EA580C;
+    --c-blue-bg: #F0F9FF;
+    --c-blue-text: #0284C7;
+    --c-gray-bg: #F4F4F5;
+    --c-gray-text: #52525B;
+}
 
-*/
+/* --- Global Reset & Backgrounds --- */
+.pw-dashboard-grid {
+    background-color: var(--pw-white) !important; /* White Background */
+    width: 100%;
+    height: 100%;
+    padding: 10px; /* 调整为 10px 留白 */
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+    color: var(--pw-text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.pw-dashboard-card {
+    background-color: var(--pw-white);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    border-radius: 12px; /* 圆角卡片 */
+    border: none; /* 不需要大边框 */
+    box-shadow: none; /* 不需要阴影 */
+}
+
+.pw-main-area {
+    background-color: var(--pw-white) !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    /* Remove right border to merge with sidebar visually */
+    border-right: none; 
+}
+
+/* Ensure the wrapper takes full height */
+.pw-calendar-view {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.pw-sidebar {
+    background-color: var(--pw-white) !important; /* Match main area */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Subtle separator */
+    border-left: 1px solid var(--pw-border-color);
+    overflow: hidden;
+}
+
+/* --- Inbox Styling (Redesigned - Clean & Readable) --- */
+.pw-inbox {
+    padding: 0; /* Remove padding to let items touch edges */
+    overflow-y: auto;
+    flex: 1;
+    height: auto;
+    background-color: var(--pw-white) !important;
+    /* Performance Optimization: Skip rendering off-screen content */
+    content-visibility: auto; 
+    contain-intrinsic-size: 1000px; /* Estimate height */
+}
+
+.pw-inbox-header {
+    /* Match Calendar Header Height exactly */
+    height: 60px; 
+    min-height: 60px;
+    padding: 0 20px; /* Align text horizontally */
+    box-sizing: border-box;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    border-bottom: 1px solid var(--pw-border-color); /* Continuous line */
+    background-color: var(--pw-white);
+    flex-shrink: 0;
+}
+
+.pw-inbox-title {
+    font-weight: 800; /* Extra Bold */
+    color: var(--pw-text-primary);
+    font-size: 18px; /* Larger Title */
+    letter-spacing: -0.02em;
+    text-transform: uppercase; /* Make it look like a section */
+}
+
+.pw-inbox-group {
+    margin-top: 0;
+    margin-bottom: 0;
+    background: transparent;
+    /* Optimization */
+    contain: layout style;
+}
+
+.pw-group-header {
+    position: sticky;
+    top: 0;
+    
+    /* 字体颜色改回黑色 */
+    color: var(--pw-text-primary);
+    
+    /* 模仿日历任务卡片风格：淡色背景 + 左侧色条 */
+    background-color: color-mix(in srgb, var(--pw-plugin-theme-color) 4%, var(--pw-white)) !important;
+    border-left: 4px solid var(--pw-plugin-theme-color) !important;
+    
+    /* 去掉之前的底部边框，改用卡片式的圆角和阴影 */
+    border-bottom: none;
+    border-radius: 6px;
+    margin: 8px 12px 4px 12px; /* 增加外边距，使其看起来像独立的卡片 */
+    
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 16px;
+    
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+/* 展开状态 */
+.pw-inbox-group.expanded .pw-group-header {
+    background-color: color-mix(in srgb, var(--pw-plugin-theme-color) 4%, var(--pw-white)) !important;
+}
+
+.pw-group-header:hover {
+    /* 悬停时稍微加深背景 */
+    background-color: color-mix(in srgb, var(--pw-plugin-theme-color) 8%, var(--pw-white)) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Specific selector to override priority colors in Inbox */
+/* Transform to List Style (Apple Reminders / Mail style) */
+.pw-inbox .pw-task-item {
+    padding: 12px 20px; /* Horizontal padding matches header */
+    margin: 0;
+    background-color: var(--pw-white) !important;
+    border: none;
+    border-bottom: 1px solid var(--pw-zinc-100); /* Divider line */
+    border-radius: 0; /* No rounded corners */
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    /* Performance Optimization: Remove transition to prevent lag on hover */
+    /* transition: background-color 0.1s ease; */
+    font-size: 14px;
+    box-shadow: none;
+    /* Tell browser this element is self-contained to speed up rendering */
+    contain: layout style;
+}
+
+/* Subtasks inside the parent box */
+.pw-inbox .pw-task-item.is-child-task {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 8px 20px 8px 44px !important; /* Indent subtasks */
+    margin: 0 !important;
+}
+
+.pw-inbox .pw-task-item:hover {
+    background-color: var(--pw-zinc-50) !important;
+    transform: none;
+    box-shadow: none;
+}
+
+.pw-task-main {
+    flex: 1;
+    line-height: 1.5;
+    color: var(--pw-text-primary);
+    overflow: hidden;
+}
+
+/* Force Markdown content to match readable style */
+.pw-task-item .pw-markdown-preview {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    display: inline !important;
+}
+
+.pw-task-item .pw-markdown-preview p {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline !important;
+    font-size: inherit !important;
+}
+
+.pw-task-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.pw-task-collapse {
+    color: var(--pw-text-tertiary);
+    font-size: 12px;
+    width: 16px;
+    text-align: center;
+    margin-right: 4px;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.pw-task-item:hover .pw-task-collapse {
+    color: var(--pw-text-secondary);
+}
+
+.pw-collapse-icon {
+    color: var(--pw-text-tertiary);
+    font-size: 10px;
+    margin-right: 6px;
+}
+
+.pw-task-source-pill {
+    font-size: 10px;
+    padding: 2px 6px;
+    background-color: var(--pw-bg-element);
+    color: var(--pw-text-secondary);
+    border-radius: 4px;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* --- Buttons --- */
+.pw-btn {
+    background-color: var(--pw-white);
+    border: 1px solid var(--pw-border-color);
+    color: var(--pw-text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.pw-btn:hover {
+    background-color: var(--pw-bg-element);
+    border-color: var(--pw-zinc-300);
+}
+
+/* --- Calendar Styling --- */
+.fc {
+    background-color: var(--pw-bg-main) !important;
+    height: 100% !important;
+    --fc-today-bg-color: rgba(255, 220, 40, 0.08) !important; /* Slightly more visible today */
+    --fc-now-indicator-color: #EF4444 !important;
+    --fc-border-color: var(--pw-border-color) !important;
+}
+
+/* Hide default header since we are using custom one */
+.fc .fc-header-toolbar {
+    display: none !important;
+}
+
+/* Remove default FullCalendar event styling */
+.fc-v-event, .fc-h-event, .fc-daygrid-event {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    margin-bottom: 2px !important;
+}
+
+.fc-event-main {
+    color: inherit !important;
+    padding: 0 !important;
+}
+
+/* --- Custom Calendar Header --- */
+.pw-calendar-header {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 24px; /* 增大 Padding，让头部更宽敞大气 */
+    background-color: transparent;
+    border-bottom: 1px solid var(--pw-border-color);
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 16px;
+    position: relative;
+    min-height: 60px; /* 保证头部有足够的高度 */
+}
+
+.pw-header-left, .pw-header-right {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    z-index: 2;
+    gap: 16px; /* 增加间距 */
+}
+
+.pw-header-center {
+    font-size: 18px; /* 增大标题字体 */
+    font-weight: 700; /* 加粗标题 */
+    color: var(--pw-text-primary);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* --- 1. 导航按钮组 (Prev/Today/Next) --- */
+.pw-nav-group {
+    display: flex;
+    align-items: center;
+    background-color: transparent !important;
+    gap: 6px;
+    padding: 0;
+}
+
+.pw-nav-btn {
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    color: var(--text-normal);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.pw-nav-btn:hover {
+    background-color: var(--background-modifier-hover) !important;
+    color: var(--text-normal);
+}
+
+.pw-nav-btn:active {
+    background-color: var(--background-modifier-active-hover) !important;
+    transform: translateY(1px);
+}
+
+/* 修正箭头图标大小 */
+.pw-nav-btn svg {
+    width: 20px; /* 增大图标 */
+    height: 20px;
+    stroke-width: 2.5;
+    color: var(--text-muted);
+}
+.pw-nav-btn:hover svg {
+    color: var(--text-normal);
+}
+
+/* --- 2. 视图切换组 (Day/Week/Month/Matrix) --- */
+.pw-view-toggle-group {
+    display: flex;
+    background-color: transparent !important;
+    padding: 0;
+    border-radius: 0;
+    gap: 6px;
+}
+
+.pw-view-toggle {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid transparent !important;
+    background: transparent !important; /* 强制透明背景 */
+    background-color: transparent !important;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none !important; /* 强制去掉阴影 */
+    outline: none !important;
+}
+
+.pw-view-toggle:hover {
+    background-color: var(--background-modifier-hover) !important;
+    color: var(--text-normal);
+}
+
+/* 选中状态：深灰背景 + 加粗文字 */
+.pw-view-toggle.active {
+    background-color: var(--background-modifier-active-hover) !important;
+    color: var(--text-normal);
+    font-weight: 700;
+    box-shadow: none !important;
+}
+
+/* --- 3. Inbox 按钮 (保持一致) --- */
+.pw-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: none !important;
+    outline: none !important;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.pw-icon-btn:hover {
+    background-color: var(--background-modifier-hover) !important;
+    color: var(--text-normal);
+}
+
+.pw-icon-btn.active {
+    background-color: var(--background-modifier-active-hover) !important; /* 改为与视图切换按钮一致的灰色背景 */
+    color: var(--text-normal) !important; /* 改为普通文字颜色 */
+    font-weight: 600; /* 加粗文字 (针对 Hide All-Day 按钮) */
+    box-shadow: none !important;
+}
+
+/* 强制放大内部的 SVG 图标 */
+.pw-icon-btn svg {
+    width: 24px !important; /* 增大图标 */
+    height: 24px !important;
+    stroke-width: 2;
+    color: currentColor;
+    display: block;
+}
+
+
+
+/* --- Search Container --- */
+.pw-search-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--pw-bg-element);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 0 8px;
+    height: 34px; /* Match button height */
+    width: 200px; /* 固定宽度或自适应 */
+    transition: all 0.2s;
+}
+
+.pw-search-container:focus-within {
+    background-color: var(--pw-white);
+    border-color: var(--interactive-accent);
+    box-shadow: 0 0 0 2px rgba(var(--interactive-accent-rgb), 0.2);
+}
+
+.pw-search-container svg {
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    margin-right: 6px;
+    flex-shrink: 0;
+}
+
+.pw-search-input {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    height: 100% !important;
+    width: 100%;
+    font-size: 13px;
+    color: var(--text-normal);
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.pw-search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.fc-theme-standard .fc-scrollgrid {
+    border: none !important;
+    border-top: 1px solid var(--pw-border-color) !important;
+}
+
+/* --- Calendar Header (Figma Style) --- */
+.fc-theme-standard th {
+    border: none !important; /* 去掉所有表头边框 */
+    border-bottom: 1px solid var(--pw-border-color) !important; /* 恢复表头底部边框，区分表头和内容 */
+}
+
+/* Month View Grid Fixes: Ensure uniform grid */
+.fc-dayGridMonth-view .fc-theme-standard td {
+    border: 1px solid var(--pw-zinc-100) !important; /* 恢复月视图的淡色边框 */
+}
+
+.fc-dayGridMonth-view .fc-daygrid-day-frame {
+    /* Ensure content stretches */
+    height: 100%;
+    min-height: 100%;
+}
+
+.fc-col-header-cell {
+    background-color: var(--pw-bg-main) !important;
+    padding: 12px 0 16px 0 !important; /* 上下留白 */
+    vertical-align: bottom !important; /* 内容沉底 */
+}
+
+/* 星期几 (SUN, MON) */
+.fc-col-header-cell-cushion {
+    display: flex !important;
+    flex-direction: column-reverse; /* 让日期在上面，星期在下面 */
+    align-items: center; /* 居中 */
+    gap: 4px;
+    text-decoration: none !important;
+    cursor: default;
+}
+
+/* 自定义星期几的样式 */
+.fc-col-header-cell-cushion::after {
+    /* 这里利用伪元素或者 JS 修改内容，或者简单地通过字体控制 */
+    /* FullCalendar 默认把 "Mon 11/17" 放一起，我们得用 CSS 拆分 */
+    /* 最简单的方法是修改 CalendarView.tsx 的 dayHeaderFormat */
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--pw-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* Time Axis Fix */
+.fc .fc-timegrid-axis-cushion,
+.fc .fc-timegrid-slot-label-cushion,
+.fc .fc-axis {
+    color: var(--pw-text-secondary) !important; /* 更深一点的灰色 */
+    font-size: 13px !important; /* 增大字体 */
+    font-weight: 600 !important; /* 加粗 */
+    opacity: 1 !important;
+    z-index: 10;
+}
+
+/* Ensure axis background is white */
+.fc .fc-timegrid-axis,
+.fc .fc-timegrid-slot-label {
+    background-color: var(--pw-bg-main) !important;
+    border: none !important;
+}
+
+.fc-timegrid-slot {
+    background-color: var(--pw-bg-main) !important;
+    border-bottom: 1px solid var(--pw-bg-element) !important; /* Very subtle grid lines */
+    height: 48px !important;
+}
+
+.fc-timegrid-slot-minor {
+    border-bottom-style: none !important;
+}
+
+/* --- 现代化的“幽灵”任务卡片 (Notion 风格) --- */
+.pw-event-content {
+    padding: 4px 8px; /* 稍微增加 Padding */
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 从顶部开始排列 */
+    overflow: hidden;
+    
+    /* 关键修改：使用淡色背景，而不是纯白 */
+    /* 动态计算背景色 (12% 透明度)，支持自定义颜色规则 */
+    background-color: color-mix(in srgb, currentColor 12%, transparent);
+    
+    /* 左侧色条 (使用当前文字颜色，增加一点透明度) */
+    border-left: 3px solid color-mix(in srgb, currentColor 85%, transparent) !important; 
+    
+    /* 去掉之前的全包围边框 */
+    border: none;
+    
+    /* 去掉阴影，实现扁平化 */
+    box-shadow: none;
+    
+    /* 添加微弱的悬停效果 */
+    transition: all 0.1s ease;
+}
+
+/* --- Event Header (Time & Checkbox) --- */
+.pw-event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+}
+
+/* All-Day Header Layout */
+.pw-event-header-allday {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.pw-event-title-row {
+    flex: 1;
+    font-weight: 600;
+    font-size: 14px; /* Larger font for all-day title */
+    color: var(--pw-text-primary);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+.pw-event-title-row .pw-markdown-preview p {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline !important;
+}
+
+.pw-event-toggle {
+    width: 12px;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--pw-text-tertiary);
+    transition: transform 0.2s;
+}
+
+.pw-event-toggle:hover {
+    color: var(--pw-text-primary);
+}
+
+.pw-event-toggle.is-expanded {
+    transform: rotate(90deg);
+}
+
+.pw-event-time-badge {
+    font-size: 12px; /* 与标题大小接近 */
+    font-weight: 600;
+    color: var(--pw-text-secondary);
+    opacity: 0.9;
+    line-height: 1;
+}
+
+.pw-event-checkbox {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid currentColor; /* 跟随任务颜色 */
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.2s;
+    background-color: transparent;
+    flex-shrink: 0;
+}
+
+.pw-event-checkbox:hover {
+    opacity: 1;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.pw-event-checkbox.is-checked {
+    background-color: currentColor;
+    opacity: 1;
+}
+
+.pw-event-checkbox.is-checked svg {
+    color: var(--pw-white); /* 勾选后图标变白 */
+}
+
+/* --- Event Body --- */
+.pw-event-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+    justify-content: flex-start; /* Revert vertical centering */
+}
+
+/* Day View Specific Styling: Left aligned at 40% */
+.fc-timeGridDay-view .pw-event-content {
+    padding-left: 40% !important;
+}
+
+/* 卡片内的文字样式 */
+.pw-event-title {
+    font-weight: 700; /* Bold */
+    font-size: 20px; /* 20px as requested */
+    color: var(--pw-text-primary);
+    line-height: 1.2; 
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    flex-shrink: 0;
+}
+
+/* 强制 Markdown 预览中的 P 标签去掉 Margin */
+.pw-event-title .pw-markdown-preview p,
+.pw-subtask-text .pw-markdown-preview p {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline !important;
+}
+
+/* 月视图字体保持小巧 */
+.pw-is-month-view .pw-event-title {
+    font-size: 12px;
+    font-weight: 600;
+    -webkit-line-clamp: 1;
+    color: var(--pw-text-primary); /* Ensure visible color */
+}
+
+/* --- Subtasks Styling (Compact) --- */
+.pw-event-subtasks {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 1;
+    overflow: hidden;
+}
+
+.pw-subtask-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 18px; /* 20px - 2px = 18px */
+    color: var(--pw-text-secondary);
+    opacity: 0.9;
+    line-height: 1.2;
+    overflow: hidden;
+}
+
+/* Adjust subtask size for All-Day events where title is smaller (14px) */
+.pw-is-all-day .pw-subtask-item {
+    font-size: 13px;
+}
+
+.pw-subtask-checkbox {
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.7;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.pw-subtask-checkbox:hover {
+    opacity: 1;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.pw-subtask-checkbox.is-checked {
+    background-color: currentColor;
+    opacity: 1;
+}
+
+.pw-subtask-checkbox.is-checked svg {
+    color: var(--pw-white);
+}
+
+.pw-subtask-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pw-subtask-text.is-completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.pw-event-content:hover {
+    /* Performance: Avoid filter which triggers GPU composition */
+    /* filter: brightness(0.95); */
+    opacity: 0.9;
+    transform: translateY(-1px); /* Keep the lift effect */
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* --- 定义不同优先级的淡色背景 (Tint) --- */
+/* 这些颜色与 Figma 的 Soft UI 风格一致 */
+/* 注意：由于使用了 currentColor，这些类主要用于 JS 未设置颜色时的回退，或者用于其他非动态颜色的地方 */
+.pw-priority-highest { color: #DC2626; } /* 红 */
+.pw-priority-high    { color: #EA580C; } /* 橙 */
+.pw-priority-medium  { color: #0284C7; } /* 蓝 */
+.pw-priority-normal  { color: #52525B; } /* 灰 */
+.pw-priority-low     { color: #16A34A; } /* 绿 */
+
+/* Completed Task */
+.pw-event-completed {
+    opacity: 0.8;
+}
+.pw-event-completed .pw-event-content {
+    background-color: #F9FAFB !important; /* Slightly gray for completed */
+    border-color: #E5E7EB;
+    box-shadow: none;
+}
+.pw-event-completed .pw-event-title {
+    text-decoration: line-through;
+    color: #9CA3AF;
+}
+
+/* --- 简约现代四象限美化 (Notion Style) --- */
+
+/* 1. 整体布局容器 */
+.pw-matrix-view {
+    padding: 16px;
+    background-color: var(--pw-white);
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.pw-quadrant-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px; /* 象限之间的间距 */
+    height: 100%;
+}
+
+/* 2. 象限容器 (Q1-Q4) - 变成圆角卡片 */
+.pw-quadrant {
+    background-color: var(--pw-white); /* 改为白色背景 */
+    border-radius: 12px; /* 现代圆角 */
+    border: 1px solid var(--background-modifier-border); /* 极细边框 */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 防止内容溢出圆角 */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* 极轻微的阴影 */
+}
+
+/* 3. 象限标题栏 - 增加呼吸感 */
+.pw-quadrant-header {
+    padding: 16px 24px; /* 增加内边距 */
+    font-weight: 800; /* 更粗的字体 */
+    font-size: 18px; /* 更大的字体 */
+    letter-spacing: -0.01em;
+    /* border-bottom: 1px solid var(--background-modifier-border); */ /* 移除通用边框，使用特定颜色边框 */
+    display: flex;
+    justify-content: center; /* 居中对齐 */
+    align-items: center;
+    /* background-color: var(--pw-white); */ /* 移除默认白色背景，由具体象限定义 */
+    gap: 10px; /* 标题和徽标之间的间距 */
+}
+
+/* 标题栏颜色微调 - 添加背景色 */
+.pw-quadrant-q1 .pw-quadrant-header { 
+    background-color: var(--c-red-bg); 
+    color: var(--c-red-text); 
+    border-bottom: 1px solid rgba(220, 38, 38, 0.1);
+}
+.pw-quadrant-q2 .pw-quadrant-header { 
+    background-color: var(--c-orange-bg); 
+    color: var(--c-orange-text); 
+    border-bottom: 1px solid rgba(234, 88, 12, 0.1);
+}
+.pw-quadrant-q3 .pw-quadrant-header { 
+    background-color: var(--c-blue-bg); 
+    color: var(--c-blue-text); 
+    border-bottom: 1px solid rgba(2, 132, 199, 0.1);
+}
+.pw-quadrant-q4 .pw-quadrant-header { 
+    background-color: var(--c-gray-bg); 
+    color: var(--c-gray-text); 
+    border-bottom: 1px solid rgba(82, 82, 91, 0.1);
+}
+
+/* 数量徽标优化 - 适配标题背景 */
+.pw-count-badge {
+    background-color: rgba(255, 255, 255, 0.6); /* 半透明白色，适应各种背景 */
+    color: currentColor; /* 跟随标题颜色 */
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* 4. 任务列表内容区 */
+.pw-quadrant-content {
+    padding: 8px; /* 给任务列表留出边缘 */
+    overflow-y: auto;
+    flex: 1;
+}
+
+.pw-quadrant-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 5. 任务项 - 悬浮卡片感 (模仿日程卡片风格) */
+.pw-matrix-view .pw-task-item {
+    /* 使用 currentColor (由内联样式设置) 来生成背景色 */
+    background-color: color-mix(in srgb, currentColor 6%, white) !important; 
+    
+    /* 左侧色条 */
+    border: none !important;
+    border-left: 3px solid currentColor !important;
+    
+    margin-bottom: 8px;
+    padding: 10px 12px;
+    border-radius: 6px; /* 稍微圆润一点 */
+    
+    transition: all 0.2s ease;
+    
+    /* 强制 flex 布局对齐 */
+    display: flex !important;
+    align-items: center;
+    min-height: auto;
+    
+    /* 阴影 */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* 任务项悬停效果 */
+.pw-matrix-view .pw-task-item:hover {
+    background-color: color-mix(in srgb, currentColor 10%, white) !important;
+    transform: translateY(-1px); /* 微微上浮 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 6. 复选框样式重构 */
+.pw-matrix-view .pw-event-checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 2px solid currentColor;
+    margin-right: 10px;
+    position: relative;
+    opacity: 0.6;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pw-matrix-view .pw-event-checkbox:hover {
+    opacity: 1;
+}
+
+.pw-matrix-view .pw-event-checkbox.is-checked {
+    background-color: currentColor;
+    opacity: 1;
+}
+
+.pw-matrix-view .pw-event-checkbox.is-checked svg {
+    color: var(--pw-white);
+}
+
+/* 7. 字体与间距微调 - 针对四象限视图优化 */
+.pw-matrix-view .pw-task-main {
+    font-size: 14px; /* 增大字体 */
+    font-weight: 500; /* 稍微加粗 */
+    line-height: 1.5;
+    color: var(--pw-text-primary);
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 8px;
+}
+
+/* 确保 Markdown 内容垂直居中且不换行 */
+.pw-matrix-view .pw-task-main .pw-markdown-preview {
+    display: inline-block;
+    vertical-align: middle;
+}
+.pw-matrix-view .pw-task-main .pw-markdown-preview p {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline !important;
+}
+
+/* 任务元数据 (文件名/日期) - 优化显示 */
+.pw-matrix-view .pw-task-meta {
+    margin-top: 0;
+    margin-left: 0;
+    font-size: 12px;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+/* 文件名胶囊样式 */
+.pw-matrix-view .pw-task-source-pill {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--pw-text-secondary);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+.pw-matrix-view .pw-task-source-pill:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--pw-text-primary);
+}
+
+/* 日期样式优化 */
+.pw-matrix-view .pw-task-date {
+    font-family: 'SF Mono', 'Consolas', 'Menlo', monospace; /* 等宽字体显示日期更整齐 */
+    font-size: 12px;
+    font-weight: 600;
+    color: currentColor; /* 跟随任务颜色 */
+    opacity: 0.9;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: -0.5px;
+}
+
+/* Hide subtask indentation lines in Matrix view */
+.pw-matrix-view .pw-task-item[style*="padding-left"] {
+    border-left: none !important;
+    padding-left: 12px !important; 
+}
+.pw-matrix-view .pw-task-item .pw-task-main span[style*="color: var(--pw-text-muted)"] {
+    display: none; 
+}
+
+/* --- 月视图日期美化 --- */
+
+/* 1. 让日期数字变大、变清晰 */
+.fc-daygrid-day-number {
+    font-size: 18px !important; /* 增大字体 */
+    font-weight: 600 !important;
+    color: var(--pw-text-primary) !important;
+    padding: 8px 8px 0 0 !important; /* 增加一点呼吸感 */
+    opacity: 0.8;
+    cursor: pointer; /* 提示可点击 */
+}
+
+/* 2. 去掉默认的下划线 (如果有的话) */
+.fc-daygrid-day-number:hover {
+    text-decoration: none !important;
+    color: var(--pw-accent) !important; /* 悬停变色 */
+    transform: scale(1.1); /* 悬停放大效果 */
+    transition: transform 0.2s;
+}
+
+/* 3. 不是本月的日期 (比如上个月底) 变淡 */
+.fc-day-other .fc-daygrid-day-number {
+    opacity: 0.3;
+}
+
+/* 4. "今天"的格子特殊处理 */
+.fc-day-today .fc-daygrid-day-number {
+    background-color: var(--c-red-bg); /* 红色圆圈背景 */
+    color: var(--c-red-text) !important;
+    width: 28px; /* 稍微加大圆圈 */
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+    margin-right: 4px;
+    padding: 0 !important; /* 重置 padding 以便居中 */
+}
+
+/* --- 周数样式 (W35) --- */
+.fc-daygrid-week-number {
+    background-color: transparent !important;
+    color: var(--pw-text-tertiary) !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    padding: 8px !important;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0.6;
+}
+
+.fc-daygrid-week-number:hover {
+    color: var(--pw-text-primary) !important;
+    background-color: var(--pw-bg-hover) !important;
+    opacity: 1;
+    border-radius: 4px;
+}
+
+/* --- 周视图竖线分隔 --- */
+.fc-timegrid-col {
+    border-left: 1px solid var(--pw-zinc-300) !important; /* 加深颜色，确保可见 */
+}
+
+/* 第一列不需要左边框，避免双重边框 */
+.fc-timegrid-col:first-child {
+    border-left: none !important; 
+}
+
+/* 增强周视图竖线可见性 */
+.fc .fc-timegrid-col-frame {
+    border-left: 1px solid var(--pw-zinc-200);
+}
+
+/* --- Inbox Subtask Styling --- */
+/* Ensure subtasks are clearly nested and don't look like separate cards */
+.pw-inbox .pw-task-item.is-child-task {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 4px 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+.pw-inbox .pw-task-item.is-child-task:hover {
+    background-color: rgba(0,0,0,0.02) !important; /* Very subtle hover for subtasks */
+    transform: none !important;
+    box-shadow: none !important;
+}
